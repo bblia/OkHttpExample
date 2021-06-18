@@ -1,6 +1,5 @@
 package com.example.okhttpexample.network
 
-import com.example.okhttpexample.network.ConnectivityHelper
 import okhttp3.CacheControl
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -10,7 +9,7 @@ class CacheInterceptor(connectivityHelper: ConnectivityHelper): Interceptor {
     private val connectivityHelper = connectivityHelper
 
     @Throws(IOException::class)
-    override fun intercept(chain: Interceptor.Chain): Response? {
+    override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
         val request = originalRequest.newBuilder()
         val cacheHeader: String

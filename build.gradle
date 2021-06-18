@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.2.0-beta04"
+        classpath 'com.android.tools.build:gradle:4.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -17,13 +17,18 @@ buildscript {
 ext {
     retrofitVersion = '2.8.1'
     daggerVersion = '2.28.1'
-    okhttpVersion = '3.14.2'
+    okhttpVersion = '4.9.1'
+    okioversion = "2.9.0"
+    bbd_version = "9.1.0.4924"
 }
 
 allprojects {
     repositories {
+//        mavenLocal()
         google()
         jcenter()
+
+        maven {url '../../Dynamics_sdk_preview_build_9.1.0.4924/m2repository' }
     }
 }
 

@@ -3,6 +3,7 @@ package com.example.okhttpexample.di.modules
 import android.app.Application
 import android.content.SharedPreferences
 import android.content.pm.ApplicationInfo
+import com.blackberry.okhttpsupport.interceptor.GDCustomInterceptor
 import com.example.okhttpexample.network.ConnectivityHelper
 import com.example.okhttpexample.network.CacheInterceptor
 import com.example.okhttpexample.network.GitHubApiInterface
@@ -47,10 +48,16 @@ class NetModule(var baseUrl: String) {
         userAgentInterceptor: UserAgentInterceptor,
         cacheInterceptor: CacheInterceptor
     ): OkHttpClient {
+
+//        val gdCustomInterceptor = GDCustomInterceptor()
+//        gdCustomInterceptor.disableHostVerification()
+//        gdCustomInterceptor.disablePeerVerification()
+
         return OkHttpClient.Builder().apply {
             cache(cache)
             addInterceptor(userAgentInterceptor)
             addNetworkInterceptor(cacheInterceptor)
+//            addInterceptor(gdCustomInterceptor)
             if (isApplicationDebuggable(application)) {
                 val httpLoggingInterceptor = HttpLoggingInterceptor()
                 httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
